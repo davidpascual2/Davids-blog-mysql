@@ -2,8 +2,9 @@ import React from "react";
 
 const SinglePost = () => {
     return (
-        <div>
-            singlePost
+        <div className="singlePost">
+            <div className="content">c</div>
+            <div className="menu">m</div>
         </div>
       );
 }

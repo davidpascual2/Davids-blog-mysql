@@ -1,6 +1,9 @@
 const Footer = () => {
     return (
-        <div>Footer</div>
+        <footer>
+          <img src="" alt='' /> 
+          <span> Made with heart and <b>React.js</b></span>
+        </footer>
       );
 }
  
