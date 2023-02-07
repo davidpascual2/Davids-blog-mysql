@@ -11,7 +11,7 @@ $lightGreen: #b9e7e7;
 
         .link{
             text-decoration: none;
-            color: inherit
+            color: inherit;
         }
 
         //LOGIN & REGISTER
@@ -78,7 +78,7 @@ $lightGreen: #b9e7e7;
                 justify-content: space-between;
 
                 .logo{
-                    width: 120px
+                    width: 120px;
 
                 }
                 .links{
@@ -117,7 +117,7 @@ $lightGreen: #b9e7e7;
             }
         }
 
-        //FOOTER
+        // FOOTER
 
         footer{
             margin-top:100px;
@@ -133,7 +133,7 @@ $lightGreen: #b9e7e7;
             }
         }
 
-        //HOME
+        // HOME
 
         .home{
             .posts{
@@ -207,7 +207,7 @@ $lightGreen: #b9e7e7;
             }
         }
 
-        //SINGLE POST
+        // SINGLE POST
 
         .singlePost{
             display: flex;
@@ -217,7 +217,7 @@ $lightGreen: #b9e7e7;
                 flex: 5;
                 display: flex;
                 flex-direction: column;
-                gap:30px;
+                gap:20px;
 
                 img{
                     width: 100%;
@@ -245,7 +245,7 @@ $lightGreen: #b9e7e7;
                     }
 
                     p{ //margin had space
-                        margin: 0
+                        margin: 0;
                     }
                 }
 
@@ -262,7 +262,8 @@ $lightGreen: #b9e7e7;
 
                 h1{
                     font-size: 42px;
-                    color: #333
+                    color: #333;
+                    margin: 0; ///???????
 
                 }
 
@@ -293,11 +294,116 @@ $lightGreen: #b9e7e7;
                         height: 200px;
                         object-fit: cover ;
                     }
+                    h2{
+                        color: #555;
+                        // margin: ; //fix margin too much space
+                    }
 
-                    
+                    button{
+                        width: max-content; //????????
+                        padding: 7.5px 15px;
+                        border: none;
+                        cursor: pointer;
+                        background-color: white;
+                        border: 1px solid teal;
+                        color: teal;
+
+                        &:hover{
+                            border: 1px solid white;
+                            background-color: $lightGreen;
+                            color: black;
+                        }
+                    }
                 }
-            
             }
+        }
+
+        // WRITEPOST
+
+        .add{
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+
+            .content{
+                flex: 5;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                input{
+                    padding: 10px;
+                    border: 1px solid lightgray;
+                }
+
+                .editorContainer{
+                    height: 300px;
+                    overflow: scroll;
+                    border: 1px solid lightgray;
+
+                    .editor{
+                        height: 100%;
+                        border: none;
+                    }
+                }
+            }
+
+            .menu{
+                flex:2;
+                display: flex;
+                flex-direction: column;
+                gap:20px;
+
+                .item{
+                    border: 1px solid lightgrey;
+                    padding: 10px;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    font-size: 12px;
+                    color: #555;
+
+                    h1{
+                        font-size: 20px;
+                    }
+
+                    .file{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+
+                    .buttons{
+                        display: flex;
+                        justify-content: space-between;
+
+                        :first-child{ //can also just give buttons different class names
+                            cursor: pointer;
+                            color: teal;
+                            background-color: white;
+                            border: 1px solid teal;
+                            padding: 3px 5px;
+                        }
+
+                        :last-child{ //can also just give buttons different class names
+                            cursor: pointer;
+                            color: white;
+                            background-color: teal;
+                            border: 1px solid teal;
+                            padding: 3px 5px;
+                        }
+                    }
+
+                    .cat{
+                        display: flex;
+                        align-items: center;
+                        gap: 2px;
+                        color: teal;
+                    }
+                }
+            }
+
+
         }
     }
 }

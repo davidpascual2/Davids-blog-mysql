@@ -8,19 +8,19 @@ const Home = () => {
     const posts = [
         {
             id:1,
-            title: "lorem",
+            title: "lorem ipsum asdfas asdfsd",
             desc: "lorem ipsum asldfjk asd fas fd asdfas asd fas fsd s a fs df asdfasfdfasdf asdf asdfadsfdsf sd",
             img: "https://www.w3schools.com/css/img_5terre.jpg"
         },
         {
             id:2,
-            title: "lorem",
+            title: "lorem ipsum asdf lasdfa",
             desc: "lorem a  fa d sa ds   as d s f ads  f as df as  saf as fsa fd sa fsafasfssa fa sf asf dsafasdfsad f asdf",
             img: "https://www.w3schools.com/css/img_forest.jpg"
         },
         {
             id:3,
-            title: "lorem",
+            title: "lorem asdfasdf asdfasd asdf",
             desc: "lorem asdaf asd fa sdfasdfasdf adf asd fasdfasdfasd fasdfasdfasdf asdfasdfasdfdsa dsa adfads fasdfasdfsda f",
             img: "https://www.w3schools.com/css/img_lights.jpg"
         },
