@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "develop": "concurrently \"cd server && npm run devstart\" \"cd client && npm start\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "if-env": "^1.0.4",
+    "path": "^0.12.7"
+  }
+}
