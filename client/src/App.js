@@ -1,140 +1,219 @@
 import './App.css';
-import React, {useState, useEffect} from "react";
-import Axios from 'axios'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home'
+import Login from './pages/Login';
+import Register from './pages/Register';
+import WritePost from './pages/WritePost';
+import SinglePost from './pages/SinglePost';
+import './style.scss';
+
+const Layout = () => {
+  return(
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path:'/',
+        element:<Home />
+      },
+      {  
+        path:'/post/:id',
+        element:<SinglePost />
+      },
+      {
+        path:'/writepost',
+        element:<WritePost />
+      },
+    ]
+  },
+  {
+    path: '/register',
+    element: <Register/>,
+  },
+  {
+    path: '/login',
+    element: <Login/>,
+  },
+]);
 
-  //=====STATES=================
+const App = () => {
+  return (
+    <div className="app">
+      <div className='container'>
+        <RouterProvider router={router}/>
+      </div>
+    </div>
+    );
+}
+ 
+export default App;
 
-  const [movie_name, setMovieName] = useState('')
-  const [review, setReview] = useState('')
-  const [movieReviewList, setMovieList] = useState([])
-  const [newReview, setNewReview] = useState('')
 
-  //======USE EFFECT ============
 
-  // useEffect(() => {
-  //   Axios.get('http://localhost:3001/api/get').then((response)=> {
-  //     setMovieList(response.data)
-  //     // console.log(response.data)
-  //   })
-  // }, [])
 
-  useEffect(() => { //runs when the page is rendered
-    const fetchData = async () => {
-      try {
-        const response = await Axios.get('http://localhost:3001/api/get');
-        setMovieList(response.data)
-      } catch (err) {
-        console.log(err)
-        alert("error fetching data: " + err);
-      }
-    };
-    fetchData();
+
+
+
+
+
+//================ OLD PROJECT UNCOMMENT ENTIRE SECTION TO ACCESS ================
+//================================================================================
+
+// import './App.css';
+// import React, {useState, useEffect} from "react";
+// import Axios from 'axios'
+
+
+// function App() {
+
+//   //=====STATES=================
+
+//   const [movie_name, setMovieName] = useState('')
+//   const [review, setReview] = useState('')
+//   const [movieReviewList, setMovieList] = useState([])
+//   const [newReview, setNewReview] = useState('')
+
+//   //======USE EFFECT ============
+
+//   // useEffect(() => {
+//   //   Axios.get('http://localhost:3001/api/get').then((response)=> {
+//   //     setMovieList(response.data)
+//   //     // console.log(response.data)
+//   //   })
+//   // }, [])
+
+//   useEffect(() => { //runs when the page is rendered
+//     const fetchData = async () => {
+//       try {
+//         const response = await Axios.get('http://localhost:3001/api/get');
+//         setMovieList(response.data)
+//       } catch (err) {
+//         console.log(err)
+//         alert("error fetching data: " + err);
+//       }
+//     };
+//     fetchData();
     
-  }, [])
+//   }, [])
 
   
 
-  //================ .THEN ====================
+//   //================ .THEN ====================
 
-  // const submitReview = () => {
-  //   Axios.post('http://localhost:3001/api/insert', {
-  //     movieName: movieName, 
-  //     movieReview: review
-  //   });
-  //   setMovieList([
-  //     ...movieReviewList, {movieName: movieName, movieReview: review }, 
-  //   ]) 
-  // };
+//   // const submitReview = () => {
+//   //   Axios.post('http://localhost:3001/api/insert', {
+//   //     movieName: movieName, 
+//   //     movieReview: review
+//   //   });
+//   //   setMovieList([
+//   //     ...movieReviewList, {movieName: movieName, movieReview: review }, 
+//   //   ]) 
+//   // };
 
-  // ============ TRY CATCH ===========//
+//   // ============ TRY CATCH ===========//
 
-  const submitReview = () => {
-    try{
-      const response = Axios.post('http://localhost:3001/api/insert', {
-        movie_name: movie_name, //ref state name (line 10)
-        movie_review: review //ref state name (line 11)
-      });
-      console.log(response)
-      // alert('successful insert!')
-      setMovieList([ //to auto refresh when we add a new review (ref states)
-        ...movieReviewList, {movie_name: movie_name, movie_review: review }, 
-      ]) 
-    } catch (err) {
+//   const submitReview = () => {
+//     try{
+//       const response = Axios.post('http://localhost:3001/api/insert', {
+//         movie_name: movie_name, //ref state name (line 10)
+//         movie_review: review //ref state name (line 11)
+//       });
+//       console.log(response)
+//       // alert('successful insert!')
+//       setMovieList([ //to auto refresh when we add a new review (ref states)
+//         ...movieReviewList, {movie_name: movie_name, movie_review: review }, 
+//       ]) 
+//     } catch (err) {
 
-      console.log(err);
-      alert('Insert failed: ' + err)
-    }
-  };
+//       console.log(err);
+//       alert('Insert failed: ' + err)
+//     }
+//   };
 
-  //====== delete review =======
+//   //====== delete review =======
 
-  const deleteReview = (movie) => {
-    Axios.delete(`http://localhost:3001/api/delete/${movie}`);
-  };
+//   const deleteReview = (movie) => {
+//     Axios.delete(`http://localhost:3001/api/delete/${movie}`);
+//   };
 
-// ====== update review ======//
+// // ====== update review ======//
 
-const updateReview = (movie) => {
-  Axios.put(`http://localhost:3001/api/update`, {
-    movie_name: movie,
-    movie_review: newReview,
-  });
-  setNewReview('')
-};
-//======== JSX ============
+// const updateReview = (movie) => {
+//   Axios.put(`http://localhost:3001/api/update`, {
+//     movie_name: movie,
+//     movie_review: newReview,
+//   });
+//   setNewReview('')
+// };
+// //======== JSX ============
 
-  return (
-    <div className="App">
-      <h2>Movie Review</h2>
-      <div className='form'>
-        <label>movie name</label>
-        <input 
-          type="text" 
-          name="movie_name" 
-          onChange={(e) => {
-            setMovieName(e.target.value)
-          }} />
+//   return (
+//     <div className="App">
+//       <h2>Movie Review</h2>
+//       <div className='form'>
+//         <label>movie name</label>
+//         <input 
+//           type="text" 
+//           name="movie_name" 
+//           onChange={(e) => {
+//             setMovieName(e.target.value)
+//           }} />
 
-        <label>review</label>
-        <input 
-          type="text" 
-          name="movie_review" 
-          onChange={(e) => {
-            setReview(e.target.value)
-          }}/>
+//         <label>review</label>
+//         <input 
+//           type="text" 
+//           name="movie_review" 
+//           onChange={(e) => {
+//             setReview(e.target.value)
+//           }}/>
 
-        <button onClick ={submitReview} >Submit</button>
+//         <button onClick ={submitReview} >Submit</button>
 
-        {movieReviewList.map((val) => { //render list of reviews
-            return (
-              <div className='card'>
-                <h3>{val.movie_name}</h3>
-                <p>{val.movie_review}</p>
+//         {movieReviewList.map((val) => { //render list of reviews
+//             return (
+//               <div className='card'>
+//                 <h3>{val.movie_name}</h3>
+//                 <p>{val.movie_review}</p>
 
-                <button onClick={() => { // delete button
-                  deleteReview(val.movie_name)
-                  }}>Delete</button>
+//                 <button onClick={() => { // delete button
+//                   deleteReview(val.movie_name)
+//                   }}>Delete</button>
 
-                <input //update input
-                  type="text" 
-                  id='updateInput' 
-                  onChange={(e) => {
-                    setNewReview(e.target.value);
-                  }} 
-                />
-                <button onClick ={() => {updateReview(val.movie_name)}}>Update</button>
+//                 <input //update input
+//                   type="text" 
+//                   id='updateInput' 
+//                   onChange={(e) => {
+//                     setNewReview(e.target.value);
+//                   }} 
+//                 />
+//                 <button onClick ={() => {updateReview(val.movie_name)}}>Update</button>
 
 
 
-              </div>
-            );
-        })}
-      </div>
-    </div>
-  );
-}
+//               </div>
+//             );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
