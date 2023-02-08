@@ -9,13 +9,6 @@ const sequelize = new Sequelize(
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     
-
-    // database name
-    // 'review_DB',
-    // // User
-    // 'root',
-    // // Password
-    // 'Dave52416',
     {
         //database location
         host: '127.0.0.1',

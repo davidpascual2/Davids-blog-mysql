@@ -1,23 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-// const app = express()
+const routes = require('./routes')
 const path = require('path');
 const mysql = require('mysql2');
 //import the connection object
 const sequelize = require('./config/connection')
 
 // IMPORT MODEL TO SYNC TABLE WITH DATABASE
-const Review = require('./models/Review');
+// const Review = require('./models/Review');
+const User = require('./models/User');
+const Post = require('./models/Post');
 
 //=================//
 const app = express();
-const PORT = process.env.PORT || 3001; //different port than that on connection.js
+const PORT = process.env.PORT || 3001; //must be on different port than that on connection.js
 
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true})) 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(routes);
 
 //========EVERY DATABASE MUST HAVE THIS=========
 
@@ -92,7 +95,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 //force true drops/recreates table(s) on every sync
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
+    app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
   });
 
 // same code as above but with async/await and try/catch
