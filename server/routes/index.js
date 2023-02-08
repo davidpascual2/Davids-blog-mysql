@@ -1,9 +1,15 @@
 const router = require('express').Router()
 
 
-const post = require('./postRoute')
+const postRoute = require('./postRoute') //link file
 
-//middleware
-router.use('/', post);
+//middleware function
+router.use('/', postRoute); //first arg should be path? and second arg is module that handles request
+
+
+
+
+
+
 
 module.exports = router

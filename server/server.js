@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-const routes = require('./routes')
 const path = require('path');
 const mysql = require('mysql2');
+const routes = require('./routes')
 //import the connection object
 const sequelize = require('./config/connection')
 
