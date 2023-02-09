@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(routes);
 
+
 //========EVERY DATABASE MUST HAVE THIS=========
 
 // const db = mysql.createConnection(

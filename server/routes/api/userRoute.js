@@ -8,7 +8,7 @@ const {
     // logout
     createUser,
 
- } = require('../controllers/userController'); // import { addPost } from '../controllers/postController.js';
+ } = require('../../controllers/userController'); // import { addPost } from '../controllers/postController.js';
 
 
 // router.route('/register', register);

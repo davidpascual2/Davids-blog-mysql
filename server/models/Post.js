@@ -5,12 +5,12 @@ class Post extends Model {}
 
 Post.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     primaryKey: true,
+        //     autoIncrement: true
+        // },
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -19,23 +19,23 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        img: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: { 
-                model: 'user',
-                key: 'id',
-            },
-        },
+        // img: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        // },
+        // date: {
+        //     type: DataTypes.DATE,
+        //     allowNull: false,
+        //     defaultValue: DataTypes.NOW,
+        // },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: { 
+        //         model: 'user',
+        //         key: 'id',
+        //     },
+        // },
     },
     {
         //link to database connection
