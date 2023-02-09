@@ -16,7 +16,7 @@
 
 
 
-module.exports = router;
+
 
 //====================== TYPE: MODULE (ES6)======================//
 

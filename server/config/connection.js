@@ -1,8 +1,12 @@
-const Sequelize = require('sequelize');
+import mysql from 'mysql2';
+import Sequelize from 'sequelize'; //const Sequelize = require('sequelize');
+
+
+
 require('dotenv').config({path:'../.env'})
 
 //create a connection object
-const sequelize = new Sequelize(
+export const sequelize = new Sequelize(
     //must be in this order 
 
     process.env.DB_NAME,
@@ -26,4 +30,3 @@ const sequelize = new Sequelize(
 //         process.env.
 //     )
 // }
-module.exports = sequelize;

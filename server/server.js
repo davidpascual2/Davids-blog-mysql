@@ -1,11 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors')
-const path = require('path');
-const mysql = require('mysql2');
-const routes = require('./routes')
+import express from "express"
 //import the connection object
-const sequelize = require('./config/connection')
+import sequelize from "./config/connection.js";
+import bodyParser from "body-parser";
+import cors from 'cors';
+import path from "path";
+import mysql from 'mysql2'
+
+
+// const sequelize = require('./config/connection')
 
 // IMPORT MODEL TO SYNC TABLE WITH DATABASE
 // const Review = require('./models/Review');
@@ -20,7 +22,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(routes);
+// app.use(routes);
 
 //========EVERY DATABASE MUST HAVE THIS=========
 
