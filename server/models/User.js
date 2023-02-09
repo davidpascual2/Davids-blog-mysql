@@ -1,7 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection')
+const sequelize = require('../config/connection');
+// const bcrypt = require('bcrypt');
 
-class User extends Model {}
+class User extends Model {
+
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password)
+    }
+}
 
 User.init(
     {
@@ -28,7 +34,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [6],
+                len: [4],
             }
         },
         img: {
@@ -37,6 +43,13 @@ User.init(
 
     },
     {
+        hooks: {
+            beforeCreate(userData) {
+                userData.username = userData.useranme.toLowerCase();
+                userData.password = bcrypt.hashSync(userData.password, 10);
+                return userData
+            },
+        },
         //link to database connection
         sequelize,
         freezeTableName: true,
@@ -48,5 +61,7 @@ User.init(
 );
 
 module.exports = User;
+
+
 
 

@@ -1,17 +1,17 @@
-const router = require('express').Router(); 
+// const router = require('express').Router(); 
 // const { Auth } = require('../models');
 
 //imports the functions (opeations?) from post auth controller file. all needed functions must be added
-const {
-    register,
-    login,
-    logout
- } = require('../controllers/authController'); // import { addPost } from '../controllers/postController.js';
+// const {
+//     register,
+//     login,
+//     logout
+//  } = require('../controllers/authController'); // import { addPost } from '../controllers/postController.js';
 
 
-router.post('/register', register);
-router.post('/login', login)
-router.post('/logout', logout)
+// router.post('/register', register);
+// router.post('/login', login)
+// router.post('/logout', logout)
 
 
 

@@ -28,10 +28,10 @@ Post.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        userID: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: { // ADD ON DELETE CASCADE!!!
+            references: { 
                 model: 'user',
                 key: 'id',
             },
