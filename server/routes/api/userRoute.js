@@ -6,16 +6,18 @@ const {
     // register,
     // login,
     // logout
+    getUsers,
     createUser,
 
  } = require('../../controllers/userController'); // import { addPost } from '../controllers/postController.js';
 
-
+router.get('/', getUsers)
+router.post('/', createUser)
 // router.route('/register', register);
-router.route('/')
- .get(createUser)
-router.route('/login', login);
-router.route('/logout', logout);
+// router.route('/')
+//  .get(createUser)
+// router.route('/login', login);
+// router.route('/logout', logout);
 
 
 

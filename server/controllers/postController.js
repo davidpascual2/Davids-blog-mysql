@@ -8,7 +8,7 @@ module.exports = {
     // },
     getPosts: async function( req, res) {
         try {
-            const post = await Post.find() //posts variable?
+            const post = await Post.findAll() //posts variable?
             res.json(post)
         } catch (err) {
             res.status(500).json(err)

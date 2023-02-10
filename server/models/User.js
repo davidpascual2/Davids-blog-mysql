@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 class User extends Model {
 
@@ -22,14 +22,14 @@ User.init(
             unique: true,
             allowNull: false
         },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true,
-            }
-        },
+        // email: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     unique: true,
+        //     validate: {
+        //         isEmail: true,
+        //     }
+        // },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -37,17 +37,17 @@ User.init(
                 len: [4],
             }
         },
-        img: {
-            type: DataTypes.STRING //this is a string because we do not store photo in database. stored in server(cloud server) taking url and pasting inside table row 
-        }
+        // img: {
+        //     type: DataTypes.STRING //this is a string because we do not store photo in database. stored in server(cloud server) taking url and pasting inside table row 
+        // }
 
     },
     {
         hooks: {
             beforeCreate(userData) {
-                userData.username = userData.useranme.toLowerCase();
+                userData.username = userData.username.toLowerCase();
                 userData.password = bcrypt.hashSync(userData.password, 10);
-                return userData
+                return userData;
             },
         },
         //link to database connection
