@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from "axios"; 
 
 const Register = () => {
@@ -28,8 +28,9 @@ const Register = () => {
 
   const handleSignup = async (event) => {
     event.preventDefault();
+    console.log('INSIDE SIGNUP')
     try{
-      const response = await axios.post('http://localhost:3000/user/register', inputs);
+      const response = await axios.post('http://localhost:3001/api/users', inputs);
         console.log(response)
 
     } catch (err){

@@ -29,7 +29,7 @@ module.exports = {
             
             const userData = await User.create({
                 username: req.body.username,
-                // email:req.body.password,
+                email:req.body.email,
                 password: req.body.password
             });
             res.status(200).json(userData)
