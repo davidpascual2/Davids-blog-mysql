@@ -6,6 +6,7 @@ const {
     // register,
     // login,
     // logout
+    login,
     getUsers,
     createUser,
 
@@ -13,6 +14,7 @@ const {
 
 router.get('/', getUsers)
 router.post('/', createUser)
+router.post('/login', login)
 // router.route('/register', register);
 // router.route('/')
 //  .get(createUser)

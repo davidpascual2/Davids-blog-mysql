@@ -4,6 +4,7 @@ const cors = require('cors')
 const path = require('path');
 const mysql = require('mysql2');
 const routes = require('./routes')
+const cookieParser = require('cookie-parser');
 //import the connection object
 const sequelize = require('./config/connection')
 
@@ -17,6 +18,7 @@ const app = express();
 const PORT = process.env.PORT || 3001; //must be on different port than that on connection.js
 
 app.use(cors())
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));

@@ -14,7 +14,7 @@ module.exports = {
     //     res.json({user})
     // }
 
-    getUsers: async function( req, res) {
+    getUsers: async function( req, res) { //
         try {
             const user = await User.findAll() //users variable?
             res.json(user)
@@ -23,8 +23,7 @@ module.exports = {
         }  
     },
 
-    createUser: async function (req, res) {
-
+    createUser: async function (req, res) { //router.post('/')
         try {
             
             const userData = await User.create({
@@ -48,11 +47,28 @@ module.exports = {
         // }
     },
 
-        
-    
-    // createUser(req, res) {
-    //     res.json('from controller');
-    // }
+    login: async function (req, res) {
+        try {
+            const userData = await User.findOne({ where: { username: req.body.username } }); //FINEONE???? or findByPk
+                if(!userData) {
+                    res.status(400).json({ message: 'incorrect username or password'})
+                    return;
+                }
+
+            const validPassword = userData.checkPassword(req.body.password);
+                if (!validPassword) {
+                    res.status(400).json({ message: 'invalid username or password'});
+                    return;
+                }
+                console.log(userData, "userData")
+
+        } catch (err){
+            console.log(err)
+            res.status(400).json(err)
+        }
+    },
+
+
 
 
 }

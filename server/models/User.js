@@ -39,6 +39,7 @@ User.init(
         },
         // img: {
         //     type: DataTypes.STRING //this is a string because we do not store photo in database. stored in server(cloud server) taking url and pasting inside table row 
+        //      allowNull:true
         // }
 
     },
